@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  App test
-//
-//  Created by 陈逸安 on 2/12/24.
-//
-
 import SwiftUI
 import UIKit
 
@@ -13,14 +6,25 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            mondrianImage?
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 300)
-                .padding()
-            Text("Mondrian Style Art")
+            if let mondrianImage = mondrianImage {
+                mondrianImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
+                    .padding()
+            } else {
+                Text("Generating art...")
+                    .padding()
+            }
+            Button("Refresh") {
+                let uiImage = generateMondrianStyleImage()
+                mondrianImage = Image(uiImage: uiImage)
+            }
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
         }
-        .padding()
         .onAppear {
             // Generate the image when the view appears
             let uiImage = generateMondrianStyleImage()
