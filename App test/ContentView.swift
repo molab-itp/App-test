@@ -33,7 +33,7 @@ struct ContentView: View {
     }
     
     func generateMondrianStyleImage() -> UIImage {
-        let dim = 256.0 // Smaller size for demonstration
+        let dim = 312.0 // Smaller size for demonstration
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: dim, height: dim))
         
         let image = renderer.image { ctx in
